@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body class="main_menu_movie_details">
+<header class="header-area">
+    <div class="main_menu" >
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<div class="main">
+
+    <section class="signup">
+
+        <div class="container-form">
+            <div class="signup-content">
+                <form th:object="${pictureAddBM}" action="/pictures/add-picture" th:action="@{/pictures/add-picture}" method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Add a picture to a movie or actor here!</h2>
+                    <div class="form-group">
+                        <div id="alert-danger" th:each="e : ${#fields.errors('url')}" th:text="${e}" >Url error message   </div>
+                        <input th:field="*{url}" th:errorClass="bg-danger" type="text" class="form-input" name="title" id="url" placeholder="Your Picture Url"/>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="movie-title" class="h4 mb-2">Movie title</label>
+                        </div>
+                        <select class="browser-default custom-select" id="movie-title" name="movie">
+                            <option value="">Select movie title</option>
+                            <option th:each="o : ${movieTitles}"
+                                    th:text="${o.title}">Movie title</option>
+                        </select>
+                        <small th:each="e : ${#fields.errors('movie')}" class="text-danger">Movie error message</small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="actor-name-picture" class="h4 mb-2">Actor name</label>
+                        </div>
+                        <select class="browser-default custom-select" id="actor-name-picture" name="actorName">
+                            <option value="">Select actor name</option>
+                            <option th:each="a : ${actorNames}"
+                                    th:text="${a.name}">Actor name</option>
+                        </select>
+                        <small th:each="e : ${#fields.errors('actorName')}" class="text-danger">Actor error message</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Add picture"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+<!-- JS -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

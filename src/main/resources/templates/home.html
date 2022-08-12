@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body>
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<main>
+
+    <style>
+        body {
+            background-image: url("https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/36202/article_full%401x.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div class="eball">
+        <p class="textbox"></p>
+    </div>
+
+    <script>var words = [];</script>
+
+    <script th:inline="javascript" th:each="f : ${allMovies}" th:object="${f}">
+        words.push("[(${f.title})]");</script>
+
+    <script>
+        var getRandomWord = function () {
+            return words[Math.floor(Math.random() * words.length)]
+                // = document.getElementById("movie-picture").src;
+        };
+
+        $(function () {
+            $('.eball').mouseenter(function () {
+                $('.textbox').html(getRandomWord());
+            });
+        });</script>
+
+    <div>
+        <div style="height: 80vh; overflow: auto; float:left; width: 700px;">
+            <a id="style-all-lists"  href="/movies/all-movies">All movies</a>
+
+            <div style="position: absolute; top: 250px; width: 700px">
+                <div  th:each="movie : ${allMovies}" th:object="${movie}"  class="mt-3 rounded badge-info"
+                      style="background-color: rgba(255, 255, 255, 0.3)">
+                    <img class="mr-2" th:src="@{/images/movie_random.jpg}" alt="" width="50px" height="50px">
+                    <span th:text="|Title: *{title}|">Title: {title}</span>
+
+                    <a style="color: black; font-weight: bolder" th:href="@{/movies/movie-details/{id}(id = ${movie.id})}">See more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div style="height: 80vh; overflow: auto; float: right; width: 700px;">
+            <a id="style-all-actors" href="/actors/all-actors">All actors</a>
+            <h3 style="color: #a7e8f8; float:right; font-size: 40px; font-weight: bold; line-height: 200px;
+            margin: 0 0 24px; text-shadow: 1px 1px 1px #082b34;">Reviews rating</h3>
+            <div style="position: absolute; top: 285px">
+                <div th:each="r : ${reviews}" th:object="${r}" class="mt-3 rounded badge-success" style="background-color: rgba(255, 255, 255, 0.3)">
+                    <img class="mr-2" src="/images/cinema.jpg" alt="Review" width="50px" height="50px">
+                    <span th:text="|Title: *{title};       Rating: *{rating}; |">Title: {title} Rating: {rating} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fragments/fragment :: footer"></footer>
+
+</body>
+
+</html>

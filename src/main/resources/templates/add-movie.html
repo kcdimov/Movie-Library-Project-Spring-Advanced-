@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment::head"><title>Movies</title>
+<body id="register-page-body">
+
+<header class="header_area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+
+<div class="main">
+
+    <section class="signup">
+
+        <div class="container-form">
+            <div class="signup-content">
+
+                <form th:object="${movieAddBM}" th:action="@{/movies/add-movie}" action="/movies/add-movie"
+                      method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Don't see your favourite movie? Add it here!</h2>
+                    <div class="form-group">
+                        <div class="alert-danger" th:each="e : ${#fields.errors('title')}" th:text="${e}" >Title error message   </div>
+                        <input th:field="*{title}" th:errorClass="bg-danger" type="text" class="form-input" name="title" id="name" placeholder="Movie title"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert-danger" th:each="e : ${#fields.errors('plot')}" th:text="${e}" > error message   </div>
+                        <input th:field="*{plot}" th:errorClass="bg-danger" type="text" class="form-input" name="description" id="large-text-box" placeholder="Plot"/>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="category" class="h4 mb-2">Genre</label>
+                        </div>
+                        <select class="browser-default custom-select" id="category" name="genre">
+                            <option th:each="o : ${T(bg.softuni.movies.models.enums.Genre).values()}"
+                                    th:text="${o}" th:value="${o}"></option>
+                        </select>
+                        <small th:each="e : ${#fields.errors('genre')}" class="text-danger">Category error message</small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="category" class="h4 mb-2">Sub-Genre</label>
+                        </div>
+                        <select class="browser-default custom-select" id="categoryGenre" name="genres">
+                            <option th:each="o : ${T(bg.softuni.movies.models.enums.Genre).values()}"
+                                    th:text="${o}" th:value="${o}"></option>
+
+                        </select>
+                        <small th:each="e : ${#fields.errors('genres')}" class="text-danger">Category error message</small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="category" class="add-movie-name-color">Actor name</label>
+                        </div>
+                     <select class="browser-default custom-select" name="actors">
+                            <option th:each="o : ${actorNames}"
+                                    th:text="${o}" th:value="${o}"></option>
+
+                        </select>
+                        <small th:each="e : ${#fields.errors('actor')}" class="text-danger">Actor error message</small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="actor" class="add-movie-name-color">Actor name</label>
+                             </div>
+
+                        <select class="browser-default custom-select" id="actor" name="actor"  placeholder="Actor in Supporting Role">
+                            <option th:each="o : ${actorNames}"
+                                    th:text="${o}" th:value="${o}"></option>
+
+                        </select>
+                        <small th:each="e : ${#fields.errors('actor')}" class="text-danger">Actor error message</small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Add Movie"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!--    <footer th:replace="/fragments/fragment::footer"></footer>-->
+
+<!-- JS --><!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="js/main.js"></script>-->
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body>
+<header class="header-area">
+    <div class="main_menu_movie_details">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<main>
+    <style>
+        body {
+            background-image: url("https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/36202/article_full%401x.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+    <i class="far fa-question-circle fa-spin"></i>
+
+    <div class="msg">
+        <p>Something goes wrong. Maybe you try to reach something doesn't exist!</p>
+        <p>Please click on the following link: <a href="/">home</a> and check from there.</p>
+    </div>
+</main>
+</body>
+</html>

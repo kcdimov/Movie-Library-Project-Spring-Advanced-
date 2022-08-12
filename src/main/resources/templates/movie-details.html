@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body class="main_menu_movie_details">
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<main>
+    <section th:object="${movie}" class="home_banner_area">
+
+        <h6 id="actor-name" th:text="*{title}"></h6>
+
+        <div class="container box_1620">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="banner_content">
+
+
+                    <div  class="media">
+                        <div class="d-flex">
+                            <img style="max-height: 750px; max-width: 350px;
+                            height: auto; width: auto;" th:src="${picture}" alt="Movie picture">
+                        </div>
+                        <div class="media-body">
+                            <div class="personal_text">
+                                <h3 th:text="*{genres.get(0)}"></h3>
+<!--                                <h3 th:text="*{genres.get(1)}"></h3>-->
+                                <div style="width: 200px; word-wrap: break-word" th:text="*{plot}"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                            <th:block th:if="${!reviews.isEmpty()}">
+                                <div th:each="r : ${reviews}" th:object="${r}" class="movie_details_review"
+                                     style="">
+                                <span th:text="|Title: *{title}; Rating: *{rating}; Description: *{description}|">
+                                            Title: {title} Rating: {rating} Description: {description} </span>
+                                </div>
+                            </th:block>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="/fragments/fragment :: footer"></footer>
+</body>
+</html>

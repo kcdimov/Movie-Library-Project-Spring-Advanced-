@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head">
+    <title>Admin panel</title>
+<body class="main_menu_movie_details">
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+
+<div class="topic">
+    <h2 class="brown text">STATISTIC FOR THE VISITATIONS</h2>
+    <p class="red">This is the actual statistic of the web application usage:</p>
+</div>
+
+<article class="statistic-content">
+    <table id="my-table2" class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody id="statistic-tBody">
+        </tbody>
+        <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </tfoot>
+    </table>
+</article>
+<footer th:replace="/fragments/fragment :: footer"></footer>
+<script th:src="@{/js/statistic.js}"></script>
+</body>
+</html>

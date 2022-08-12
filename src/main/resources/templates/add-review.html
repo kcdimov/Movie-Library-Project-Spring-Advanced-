@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body class="main_menu_movie_details">
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+
+<div class="main">
+
+    <section class="signup">
+
+        <div class="container-form">
+            <div class="signup-content">
+                <form th:object="${reviewAddBM}" action="/reviews/add-review" th:action="@{/reviews/add-review}" method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Make movie review!</h2>
+                    <div class="form-group">
+                        <div class="alert-danger" th:each="e : ${#fields.errors('title')}" th:text="${e}" >Title error message   </div>
+                        <input th:field="*{title}" th:errorClass="bg-danger" type="text" class="form-input" name="title" id="title" placeholder="Review title"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert-danger" th:each="e : ${#fields.errors('description')}" th:text="${e}" > error message   </div>
+                        <input th:field="*{description}" th:errorClass="bg-danger" type="text" class="form-input" name="description" id="large-text-box" placeholder="Description"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert-danger" th:each="e : ${#fields.errors('rating')}" th:text="${e}" >Rating error message   </div>
+                        <input th:field="*{rating}" th:errorClass="bg-danger" type="number" step="0.01" class="form-input" name="rating" id="rating" placeholder="Rating"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="category" class="h4 mb-2">Movie title</label>
+                        </div>
+                        <select class="browser-default custom-select" id="category" name="movie">
+                            <option th:each="o : ${movieTitles}"
+                                    th:text="${o}">Movie title</option>
+
+                        </select>
+                        <small th:each="e : ${#fields.errors('movie')}" class="text-danger">Movie error message</small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Add review"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

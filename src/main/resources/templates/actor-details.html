@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body>
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<main>
+
+    <style>
+        body {
+            background-image: url("https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/36202/article_full%401x.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+    <section th:object="${actor}" class="home_banner_area">
+
+        <h6 id="actor-name" th:text="*{actorName}"></h6>
+
+        <div class="container box_1620">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="banner_content">
+                    <div  class="media">
+                        <div class="d-flex">
+                            <img style="max-height: 750px; max-width: 500px;
+height: auto; width: auto;" th:src="${picture}"  alt="actor picture">
+                        </div>
+                    </div>
+                    <div class="biography" th:text="*{biography}"></div>
+                </div>
+            </div>
+            <a th:href="@{/actors/actor-details/{id}(id = ${actor.id})}">Change</a>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="/fragments/fragment :: footer"></footer>
+</body>
+</html>

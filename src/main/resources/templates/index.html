@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body>
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<main>
+    <style>
+        body {
+            background-image: url("https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/36202/article_full%401x.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+             }
+    </style>
+
+    <div style="font-size: 25px; text-align: center; vertical-align: bottom; font-weight: bold;
+     font-family: 'Arial',sans-serif"></div>
+    <div style="font-size: 80px; text-align: center; -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #e5d90e">MOVIES LIBRARY!</div>
+
+    <div>
+        <div  style="height: 60vh; overflow: auto; float:left; width: 700px; background-color: rgba(0, 0, 0, 0.3);" >
+            <h3 style="color: #a7e8f8; font-size: 40px; font-weight: bold; line-height: 32px; margin: 0 0 24px; text-shadow: 1px 1px 1px #082b34; }
+">Movies</h3>
+
+            <div th:each="f : ${movies}" th:object="${f}" class="mt-3 rounded badge-info" style="background-color: #aa0321; -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #bb8d0c; font-size: 30px; word-break: break-all">
+                <img class="mr-2" src="/images/movie_random.jpg" alt="Movie" width="50px" height="50px">
+              <span th:text="|Title: *{title}|">Title: {title}</span>
+
+                <a sec:authorize="!isAuthenticated()"  href="/register" style="color: #0c5460">See more</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/movies/movie-details/{id}(id = ${f.id})}" style="color: #0c5460">See more</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div  style="height: 60vh; overflow: auto; float: right; width: 700px; background-color: rgba(0, 0, 0, 0.3); ">
+            <h3 style="color: #a7e8f8; font-size: 40px; font-weight: bold; line-height: 32px; margin: 0 0 24px; text-shadow: 1px 1px 1px #082b34; }
+">Actors</h3>
+            <div th:each="a : ${actors}" th:object="${a}" class="mt-3 rounded badge-success" style="background-color: #9face6; -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #6f42c1; font-size: 30px; word-break: break-all">
+                <img class="mr-2" th:src="@{/images/actor_random.jpg}" alt="" width="50px" height="50px">
+                <span th:text="*{name}"></span>
+                <a sec:authorize="!isAuthenticated()" href="/register" style="color: #9fcdff">See more</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/actors/actor-details/{id}(id = ${a.id})}" style="color: #0c5460">See more</a>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fragments/fragment :: footer"></footer>
+
+</body>
+
+</html>

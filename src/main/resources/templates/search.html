@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head"></head>
+<body class="main_menu_movie_details">
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+
+<div class="main">
+
+    <section class="signup">
+
+        <div class="container-form">
+            <div class="signup-content">
+                <form th:object="${searchMovieBM}" action="/search/genre" th:action="@{/search/genre}"
+                      method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Find movies by title or genre:</h2>
+
+<!--                    <div class="form-group">-->
+<!--                        <div class="text-white label-holder d-flex justify-content-center">-->
+<!--                            <label for="movie" class="h4 mb-2">Movie</label>-->
+<!--                        </div>-->
+<!--                        <input th:field="*{title}" type="text" class="form-input" id="movie" placeholder="Movie title ...">-->
+<!--                        <small th:each="e : ${#fields.errors('title')}" class="text-danger">Search error message</small>-->
+<!--                    </div>-->
+
+                    <div class="form-group">
+                        <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="category" class="h4 mb-2">Genre</label>
+                        </div>
+                        <select class="browser-default custom-select" id="category" name="genre">
+                            <option th:each="o : ${T(bg.softuni.movies.models.enums.Genre).values()}"
+                                    th:text="${o}" th:value="${o}"></option>
+
+                        </select>
+                        <small th:each="e : ${#fields.errors('genre')}" class="text-danger">Search error message</small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Search"/>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </section>
+
+    <div>
+        <div style="height: 120vh; overflow: auto; float:bottom; width: 700px; ">
+            <div style="position: absolute; top: 560px; width: 700px;
+  left: 26.8%;">
+                <div th:each="m : ${movies}" th:object="${m}" class="mt-3 rounded badge-info"
+                     style="background-color: rgba(236,118,118,0.3)">
+                    <img class="mr-2" src="/images/movie_random.jpg" alt="Movie" width="50px" height="50px">
+                    <span style="word-break: break-all;"
+                          th:text="|Title: *{title};       Plot: *{plot} |">Title: {title} Plot: {plot} </span>
+                    <a style="color: black; font-weight: bolder" th:href="@{/movies/movie-details/{id}(id = ${m.id})}">See more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer th:replace="/fragments/fragment :: footer"></footer>
+
+<!-- JS -->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

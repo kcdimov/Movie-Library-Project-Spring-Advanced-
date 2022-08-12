@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="fragments/fragment::head"><title>Movies</title>
+</head>
+<body>
+<header class="header-area">
+    <div class="main_menu">
+        <nav th:replace="fragments/fragment::navigation"></nav>
+    </div>
+</header>
+<div class="main">
+    <style>
+        body {
+            background-image: url("https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/36202/article_full%401x.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+    <section class="signup">
+
+        <div class="container-form">
+            <div class="signup-content">
+                <form th:object="${userRegisterBM}" action="/register"
+                      th:action="@{/register}"
+                       th:method="POST" id="signup-form" class="signup-form">
+
+                    <h2 class="form-title">If you don't have account, register here! Sign up!</h2>
+                    <div class="form-group">
+                        <label for="username"></label>
+                        <div  class="alert-danger" th:each="e : ${#fields.errors('username')}" th:text="${e}" >Username error message   </div>
+
+                        <input th:field="*{username}" th:errorclass="bg-danger" type="text" class="form-input" name="username"
+                               id="username" placeholder="Username"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName"></label>
+                        <div class="alert-danger"
+                             th:each="e : ${#fields.errors('firstName')}" th:text="${e}" >First Name error message   </div>
+                        <input th:field="*{firstName}" th:errorclass="bg-danger" type="text"
+                               class="form-input" name="firstName"
+                               id="firstName" placeholder="First Name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName"></label>
+                        <div class="alert-danger" th:each="e : ${#fields.errors('lastName')}" th:text="${e}" >Last Name error message   </div>
+                        <input th:field="*{lastName}" th:errorclass="bg-danger" type="text" class="form-input" name="lastName"
+                               id="lastName" placeholder="Last Name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"></label>
+                        <div class="alert-danger" th:each="e : ${#fields.errors('email')}" th:text="${e}" >Email error message   </div>
+                        <input th:field="*{email}"
+                               th:errorclass="bg-danger"
+                               type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"></label>
+                        <div class="alert-danger" th:each="e : ${#fields.errors('password')}" th:text="${e}" >Password error message   </div>
+                        <input th:field="*{password}"
+                               th:errorclass="bg-danger"
+                               type="password" class="form-input" name="password" id="password" placeholder="Password"/>
+<!--                        <p class="invalid-feedback errors alert alert-danger">Password is required and must be minimum 3 characters!</p>-->
+                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="re_password"></label>
+                        <input th:field="*{confirmPassword}"
+                               th:errorclass="bg-danger"
+                                type="password" class="form-input" name="confirmPassword"
+                               id="re_password" placeholder="Repeat your password"/>
+                        <p class="invalid-feedback errors alert alert-danger">
+                            Passwords should match.
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                    </div>
+                </form>
+                <p class="loginhere">
+                    If you already have an account, please click on the fallowing link <a href="/login" class="loginhere-link">Login here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- JS -->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+<!--<footer th:replace="/fragments/fragment :: footer"></footer>-->
+</html>

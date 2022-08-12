@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/fragment :: head">
+    <title>Movies</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+<!--    <link rel="shortcut icon" href="favicon.ico">-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<button id="loadMovies">Load All Movies</button>
+<table>
+    <thead>
+    <tr>
+        <!--                    <th>Picture</th>-->
+        <th>Title</th>
+        <!--                    <th>Link</th>-->
+    </tr>
+    </thead>
+    <tbody id="movies-container"></tbody>
+</table>
+<script src="/js/loadMovies.js"></script>
+</body>
+</html>
