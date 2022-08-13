@@ -1,6 +1,5 @@
 package bg.softuni.movies.models.entity;
 
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class UserEntity extends BaseEntity {
     private String lastName;
     @Column(name = "password")
     private String password;
-    @Column(name = "email")
+    @Column(unique = true, name = "email")
     private String email;
     private List<Movie> movies;
     private List<Review> reviews;
