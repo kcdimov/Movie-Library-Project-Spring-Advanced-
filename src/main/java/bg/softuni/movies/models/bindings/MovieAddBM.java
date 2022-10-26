@@ -1,8 +1,8 @@
 package bg.softuni.movies.models.bindings;
-
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class MovieAddBM {
 
@@ -11,10 +11,8 @@ public class MovieAddBM {
     private String picture;
     private String genre;
     private String genres;
-
     private String actor;
-    private String actors;
-
+    private List<String> actors;
 
     //TODO add music composer and validation of actor and directors
 
@@ -67,12 +65,12 @@ public class MovieAddBM {
         this.actor = actor;
     }
 
-    @NotBlank(message = "Please enter actor name")
-    public String getActors() {
+    @NotNull(message = "Please enter actor name")
+    public List<String> getActors() {
         return actors;
     }
 
-    public void setActors(String actors) {
+    public void setActors(List<String> actors) {
         this.actors = actors;
     }
 
@@ -85,7 +83,7 @@ public class MovieAddBM {
     }
 
 
-////    @NotBlank(message = "Please enter director first name")
+//    @NotBlank(message = "Please enter director first name")
 //    public String getDirectorFirstName() {
 //        return directorFirstName;
 //    }
@@ -95,7 +93,7 @@ public class MovieAddBM {
 //    }
 //
 //
-////    @NotBlank(message = "Please enter actor last name")
+//    @NotBlank(message = "Please enter actor last name")
 //    public String getDirectorLastName() {
 //        return directorLastName;
 //    }

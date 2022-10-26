@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/fragment :: head"></head>
+<head th:replace="/fragments/fragment :: head">Movie</head>
 <body class="main_menu_movie_details">
 <header class="header-area">
     <div class="main_menu">
@@ -18,8 +17,6 @@
         <div class="container box_1620">
             <div class="banner_inner d-flex align-items-center">
                 <div class="banner_content">
-
-
                     <div  class="media">
                         <div class="d-flex">
                             <img style="max-height: 750px; max-width: 350px;
@@ -42,8 +39,15 @@
                                             Title: {title} Rating: {rating} Description: {description} </span>
                                 </div>
                             </th:block>
-
                     </div>
+                    <form th:action="@{/movies/movie-details/{id}(id=*{id})}"
+                          th:method="delete">
+                        <input type="submit" value="Delete Movie" onclick="return confirm('Are you sure wanna delete the movie!')">
+                    </form>
+<!--                    <a th:action="@{/movie-details/{id}(id=*{id})}" th:method="delete" role="button" class="btn btn-lg"-->
+<!--                       onclick="return confirm('Are you sure wanna delete the movie!')">-->
+<!--                        <span class="delete-btn">Delete Movie</span>-->
+<!--                    </a>-->
                 </div>
             </div>
         </div>

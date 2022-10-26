@@ -2,6 +2,7 @@ package bg.softuni.movies.services;
 
 import bg.softuni.movies.models.bindings.MovieAddBM;
 import bg.softuni.movies.models.entity.Movie;
+import bg.softuni.movies.models.entity.Picture;
 import bg.softuni.movies.models.entity.UserEntity;
 import bg.softuni.movies.models.enums.Genre;
 import bg.softuni.movies.models.service.ActorServiceModel;
@@ -23,18 +24,25 @@ public class MovieService {
     private final ModelMapper modelMapper;
     private final ActorService actorService;
     private final UserService userService;
+    private final PictureRepository pictureRepository;
+
 
 
     public MovieService(MovieRepository movieRepository, ModelMapper modelMapper,
-                        ActorService actorService, UserService userService) {
+                        ActorService actorService, UserService userService, PictureRepository pictureRepository) {
         this.movieRepository = movieRepository;
         this.modelMapper = modelMapper;
         this.actorService = actorService;
         this.userService = userService;
+        this.pictureRepository = pictureRepository;
     }
 
 
     public MovieServiceModel addMovie(MovieServiceModel movie, @Valid MovieAddBM movieAddBM, String currentPrincipalName) {
+
+        Picture picture = new Picture();
+        picture.setUrl(movieAddBM.getPicture());
+
         List<Genre> genres = new ArrayList<>();
 
         genres.add(this.modelMapper.map(movieAddBM.getGenre(), Genre.class));
@@ -44,7 +52,7 @@ public class MovieService {
 
         List<ActorServiceModel> actors = new ArrayList<>();
         actors.add(this.actorService.findActorsByNames(movieAddBM.getActor()));
-        actors.add(this.actorService.findActorsByNames(movieAddBM.getActors()));
+        actors.add(this.actorService.findActorByNameFromList(movieAddBM.getActors()));
 
         movie.setActors(actors);
 
@@ -53,6 +61,11 @@ public class MovieService {
         movie.setUsers(usersList);
 
         this.movieRepository.saveAndFlush(this.modelMapper.map(movie, Movie.class));
+
+        Movie movieToPicture = this.movieRepository.findByTitle(movieAddBM.getTitle());
+        picture.setMovie(movieToPicture);
+        this.pictureRepository.save(picture);
+
         return movie;
     }
 
@@ -88,6 +101,10 @@ public class MovieService {
 
         return movies;
 
+    }
+
+    public void deleteMovieById(Long id) {
+        this.movieRepository.deleteById(id);
     }
 
 //    public List<MovieDetailView> searchMovies(SearchMovieBM searchMovieBM) {

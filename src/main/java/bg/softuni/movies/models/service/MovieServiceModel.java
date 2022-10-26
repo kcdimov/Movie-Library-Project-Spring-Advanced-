@@ -1,10 +1,7 @@
 package bg.softuni.movies.models.service;
 
-
-
+import bg.softuni.movies.models.entity.Picture;
 import bg.softuni.movies.models.enums.Genre;
-
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class MovieServiceModel extends BaseEntityServiceModel {
@@ -13,7 +10,7 @@ public class MovieServiceModel extends BaseEntityServiceModel {
     private String plot;//description
     private List<ActorServiceModel> actors;
     private List<Genre> genres;
-    private List<PictureServiceModel> pictures;
+    private Picture picture;
     private List<UserServiceModel> users;
     private List<ReviewServiceModel> reviews;
 
@@ -53,12 +50,12 @@ public class MovieServiceModel extends BaseEntityServiceModel {
         this.genres = genres;
     }
 
-    public List<PictureServiceModel> getPictures() {
-        return pictures;
+    public Picture getPictures() {
+        return picture;
     }
 
-    public void setPictures(List<PictureServiceModel> pictures) {
-        this.pictures = pictures;
+    public void setPictures(Picture picture) {
+        this.picture = picture;
     }
 
     public List<UserServiceModel> getUsers() {

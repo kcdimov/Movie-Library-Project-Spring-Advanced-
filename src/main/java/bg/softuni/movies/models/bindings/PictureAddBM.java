@@ -5,8 +5,10 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 
 public class PictureAddBM {
+
     private String url;
-    private String actorName;private String movie;
+    private String actorName;
+    private String movie;
 
     public PictureAddBM() {
     }

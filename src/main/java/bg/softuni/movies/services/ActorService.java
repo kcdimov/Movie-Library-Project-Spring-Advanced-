@@ -29,6 +29,15 @@ public class ActorService {
         return map;
     }
 
+
+    public ActorServiceModel findActorByNameFromList(List<String> actors) {
+        ActorServiceModel actorServiceModel = new ActorServiceModel();
+        for (String actor : actors) {
+            Actor actorName = this.actorRepository.findByName(actor);
+            actorServiceModel = this.modelMapper.map(actorName, ActorServiceModel.class);
+        }
+        return actorServiceModel;
+    }
     public List<Actor> getAllActors() {
         return this.actorRepository.findAll();
     }

@@ -9,7 +9,6 @@ import bg.softuni.movies.services.ActorService;
 import bg.softuni.movies.services.MovieService;
 import bg.softuni.movies.services.PictureService;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -105,6 +104,15 @@ public class MovieController {
         model.addAttribute("reviews", reviews);
 
         return "movie-details";
+    }
+
+
+    @DeleteMapping("/movie-details/{id}")
+    public String deleteMovieById(@PathVariable("id") Long id) {
+
+        movieService.deleteMovieById(id);
+
+        return "redirect:/movies/all-movies";
     }
 
     @GetMapping("/my-movies")

@@ -9,15 +9,10 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
-    @Column(unique = true, name = "username", nullable = false)
     private String username;
-    @Column(nullable = false)
     private String firstName;
-    @Column(nullable = false)
     private String lastName;
-    @Column(name = "password")
     private String password;
-    @Column(unique = true, name = "email")
     private String email;
     private List<Movie> movies;
     private List<Review> reviews;
@@ -26,7 +21,7 @@ public class UserEntity extends BaseEntity {
     public UserEntity() {
     }
 
-
+    @Column(unique = true, name = "username", nullable = false)
     public String getUsername() {
         return username;
     }
@@ -36,6 +31,7 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    @Column(nullable = false)
     public String getFirstName() {
         return firstName;
     }
@@ -45,6 +41,7 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    @Column(nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -54,6 +51,7 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
@@ -63,7 +61,7 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-
+    @Column(unique = true, name = "email")
     public String getEmail() {
         return email;
     }

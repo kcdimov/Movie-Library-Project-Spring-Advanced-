@@ -18,7 +18,6 @@ public class Actor extends BaseEntity {
     public Actor() {
     }
 
-
     @Column
     public String getName() {
         return name;

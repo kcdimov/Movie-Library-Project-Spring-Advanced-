@@ -1,8 +1,6 @@
 package bg.softuni.movies.models.bindings;
 
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 public class ActorAddBM {

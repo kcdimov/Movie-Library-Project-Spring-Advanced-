@@ -22,11 +22,17 @@
                     <h2 class="form-title">Don't see your favourite movie? Add it here!</h2>
                     <div class="form-group">
                         <div class="alert-danger" th:each="e : ${#fields.errors('title')}" th:text="${e}" >Title error message   </div>
-                        <input th:field="*{title}" th:errorClass="bg-danger" type="text" class="form-input" name="title" id="name" placeholder="Movie title"/>
+                        <input th:field="*{title}" th:errorClass="bg-danger" type="text" class="form-input" name="title" id="name" placeholder="Movie Title"/>
                     </div>
                     <div class="form-group">
-                        <div class="alert-danger" th:each="e : ${#fields.errors('plot')}" th:text="${e}" > error message   </div>
-                        <input th:field="*{plot}" th:errorClass="bg-danger" type="text" class="form-input" name="description" id="large-text-box" placeholder="Plot"/>
+                        <div class="alert-danger" th:each="e : ${#fields.errors('plot')}" th:text="${e}" >Plot error message</div>
+                        <input th:field="*{plot}" th:errorClass="bg-danger" type="text" class="form-input" name="description"
+                               id="large-text-box" placeholder="Plot"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert-danger" th:each="e : ${#fields.errors('picture')}" th:text="${e}" >Picture error message</div>
+                        <input th:field="*{picture}" th:errorClass="bg-danger" type="text" class="form-input"
+                               name="picture" id="picture" placeholder="Movie Picture"/>
                     </div>
 
                     <div class="form-group">
@@ -47,7 +53,6 @@
                         <select class="browser-default custom-select" id="categoryGenre" name="genres">
                             <option th:each="o : ${T(bg.softuni.movies.models.enums.Genre).values()}"
                                     th:text="${o}" th:value="${o}"></option>
-
                         </select>
                         <small th:each="e : ${#fields.errors('genres')}" class="text-danger">Category error message</small>
                     </div>
@@ -56,41 +61,66 @@
                         <div class="text-white label-holder d-flex justify-content-center">
                             <label for="category" class="add-movie-name-color">Actor name</label>
                         </div>
-                     <select class="browser-default custom-select" name="actors">
-                            <option th:each="o : ${actorNames}"
-                                    th:text="${o}" th:value="${o}"></option>
-
+                     <select class="browser-default custom-select" name="actor">
+                            <option th:each="actor : ${actorNames}"
+                                    th:text="${actor}" th:value="${actor}">Select an Actor or Actress</option>
                         </select>
                         <small th:each="e : ${#fields.errors('actor')}" class="text-danger">Actor error message</small>
                     </div>
-
                     <div class="form-group">
-                        <div class="text-white label-holder d-flex justify-content-center">
-                            <label for="actor" class="add-movie-name-color">Actor name</label>
-                             </div>
+                            <div class="text-white label-holder d-flex justify-content-center">
+                            <label for="category" class="add-movie-name-color">Actor name</label>
+                            </div>
+<!--                        <input type="checkbox" name="actor" th:field="${movieAddBM.actor}" th:value="*{actor}">-->
+                       <div class="multipleSelection">
+                           <div class="selectBox" onclick="showCheckboxes()">
+                               <select class="browser-default custom-select">
+                                   <option>Select an Actor or an Actress</option>
+                               </select>
+                               <div class="overSelect"></div>
+                           </div>
+                           <div id="checkBoxes">
+                               <label for="actor1">
+                                   <input id="actor1"  class="browser-default custom-select" multiple="multiple"
+                                           type="checkbox" name="actors" th:each="actors : ${actorNames}"
+                                           th:text="${actors}" th:value="${actors}">
+                               </label>
+                           </div>
+                       </div>
 
-                        <select class="browser-default custom-select" id="actor" name="actor"  placeholder="Actor in Supporting Role">
-                            <option th:each="o : ${actorNames}"
-                                    th:text="${o}" th:value="${o}"></option>
+<!--                        <select class="browser-default custom-select select-checkbox"-->
+<!--                                  th:field="*{actors}" type="checkbox" multiple="multiple"-->
+<!--                                id="actor" name="actor"  placeholder="Actor in Supporting Role">-->
+<!--                            <option   th:each="actor : ${actorNames}"-->
+<!--                                    th:text="${actor}" th:value="${actor}"-->
+<!--                                      type="checkbox">Select an Actor or Actress</option>-->
 
-                        </select>
-                        <small th:each="e : ${#fields.errors('actor')}" class="text-danger">Actor error message</small>
+<!--                        </select>-->
+<!--                        <small th:each="e : ${#fields.errors('actor')}" class="text-danger">Actor error message</small>-->
                     </div>
-
                     <div class="form-group">
                         <input type="submit" name="submit" id="submit" class="form-submit" value="Add Movie"/>
                     </div>
                 </form>
-
             </div>
         </div>
     </section>
-
 </div>
+<script>
+    var show = true;
 
-<!--    <footer th:replace="/fragments/fragment::footer"></footer>-->
+    function showCheckboxes() {
+    var checkboxes =
+    document.getElementById("checkBoxes");
 
-<!-- JS --><!--<script src="vendor/jquery/jquery.min.js"></script>-->
-<!--<script src="js/main.js"></script>-->
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    if (show) {
+    checkboxes.style.display = "block";
+    show = false;
+    } else {
+    checkboxes.style.display = "none";
+    show = true;
+    }
+    }
+</script>
+</body>
 </html>

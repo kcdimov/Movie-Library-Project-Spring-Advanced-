@@ -10,17 +10,14 @@ import javax.persistence.*;
 @Table(name ="user_roles")
 public class UserRoleEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private UserRoleEnum userRole;
 
     public UserRoleEntity() {
     }
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -29,6 +26,8 @@ public class UserRoleEntity {
         this.id = id;
     }
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     public UserRoleEnum getUserRole() {
         return userRole;
     }

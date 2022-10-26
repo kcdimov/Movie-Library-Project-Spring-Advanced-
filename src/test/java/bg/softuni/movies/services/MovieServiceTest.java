@@ -4,10 +4,7 @@ import bg.softuni.movies.models.entity.Movie;
 import bg.softuni.movies.models.enums.Genre;
 import bg.softuni.movies.models.service.ActorServiceModel;
 import bg.softuni.movies.models.service.MovieServiceModel;
-import bg.softuni.movies.repository.ActorRepository;
-import bg.softuni.movies.repository.MovieRepository;
-import bg.softuni.movies.repository.UserRepository;
-import bg.softuni.movies.repository.UserRoleRepository;
+import bg.softuni.movies.repository.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,6 +38,8 @@ public class MovieServiceTest {
     private ActorService actorService;
     @Mock
     private UserService userService;
+    @Mock
+    private PictureService pictureService;
 
     @Mock
     private ActorRepository actorRepository;
@@ -48,6 +47,7 @@ public class MovieServiceTest {
     private UserRoleRepository userRoleRepository;
     private PasswordEncoder passwordEncoder;
     private AppUserDetailsService userDetailsService;
+    private PictureRepository pictureRepository;
 
 
     @BeforeEach
@@ -56,7 +56,7 @@ public class MovieServiceTest {
         actorService = new ActorService(actorRepository, modelMapper);
         userService = new UserService(userRepository, userRoleRepository, passwordEncoder, userDetailsService, modelMapper);
 
-        toTestMovieService = new MovieService(mockMovieRepository, modelMapper, actorService, userService);
+        toTestMovieService = new MovieService(mockMovieRepository, modelMapper, actorService, userService, pictureRepository);
     }
 
     @Test

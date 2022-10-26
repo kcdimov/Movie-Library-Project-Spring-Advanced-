@@ -42,16 +42,18 @@ public class PictureServiceTest {
     private AppUserDetailsService userDetailsService;
     private MovieService movieService;
     private ActorService actorService;
+    private PictureService pictureService;
     private UserService userService;
     private Random random;
     private MovieRepository movieRepository;
+    private PictureRepository pictureRepository;
 
     @BeforeEach
     void setUp() {
         modelMapper = new ModelMapper();
         actorService = new ActorService(actorRepository, modelMapper);
         userService = new UserService(userRepository, userRoleRepository, passwordEncoder, userDetailsService, modelMapper);
-        movieService = new MovieService(movieRepository, modelMapper, actorService, userService);
+        movieService = new MovieService(movieRepository, modelMapper, actorService, userService, pictureRepository);
 
 
         random = new Random();

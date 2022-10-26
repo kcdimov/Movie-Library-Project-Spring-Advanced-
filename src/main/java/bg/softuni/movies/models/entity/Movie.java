@@ -1,7 +1,5 @@
 package bg.softuni.movies.models.entity;
 
-
-
 import bg.softuni.movies.models.enums.Genre;
 
 import javax.persistence.*;
@@ -38,7 +36,6 @@ public class Movie extends BaseEntity {
     public void setPlot(String plot) {
         this.plot = plot;
     }
-
 
     @ManyToMany
     public List<Actor> getActors() {
