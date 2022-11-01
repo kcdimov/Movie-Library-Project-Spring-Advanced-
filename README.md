@@ -1,5 +1,4 @@
-# movies
-MOVIE  LIBRARY - Course Project - Spring Advanced - Soft Uni
+# MOVIE  LIBRARY - Course Project - Spring Advanced - Soft Uni
 
 MOVIE LIBRARY - application use to register movies, actors, pictures and reviews
 
