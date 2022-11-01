@@ -1,5 +1,7 @@
 # movies
-MOVIE LIBRARY - application use to register movies
+MOVIE  LIBRARY - Course Project - Spring Advanced - Soft Uni
+
+MOVIE LIBRARY - application use to register movies, actors, pictures and reviews
 
 Application conatins the following entities:
 
@@ -8,7 +10,8 @@ Application conatins the following entities:
 - Picture
 - Review
 - UserEntity you can add movie to library
-0 Statistic
+- Statistic
+
 There are three type of users: Admin, Moderator and User.
 
 If you dont' have registration you can see only movies titles, actors names and reviews. If user want to see details, needs to register. For registration have to fill username, first name, last name and email, password.
