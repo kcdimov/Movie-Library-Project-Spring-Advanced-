@@ -3,12 +3,12 @@ MOVIE LIBRARY - application use to register movies
 
 Application conatins the following entities:
 
-Movie
-Actor
-Picture
-Review
-UserEntityyou can add movie to library
-Statistic
+- Movie
+- Actor
+- Picture
+- Review
+- UserEntity you can add movie to library
+0 Statistic
 There are three type of users: Admin, Moderator and User.
 
 If you dont' have registration you can see only movies titles, actors names and reviews. If user want to see details, needs to register. For registration have to fill username, first name, last name and email, password.
