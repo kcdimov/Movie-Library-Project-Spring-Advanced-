@@ -1,9 +1,7 @@
 package bg.softuni.movies.models.entity;
 
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity

@@ -1,13 +1,11 @@
 package bg.softuni.movies.web;
 
 
-import bg.softuni.movies.models.entity.Movie;
 import bg.softuni.movies.models.entity.Review;
 import bg.softuni.movies.repository.ReviewRepository;
 import bg.softuni.movies.services.ActorService;
 import bg.softuni.movies.services.MovieService;
 import bg.softuni.movies.services.PictureService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

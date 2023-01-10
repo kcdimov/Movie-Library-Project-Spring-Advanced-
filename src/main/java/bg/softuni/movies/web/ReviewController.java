@@ -2,8 +2,6 @@ package bg.softuni.movies.web;
 
 import bg.softuni.movies.models.bindings.ReviewAddBM;
 import bg.softuni.movies.models.service.ReviewServiceModel;
-import bg.softuni.movies.services.AppUser;
-import bg.softuni.movies.services.AppUserDetailsService;
 import bg.softuni.movies.services.MovieService;
 import bg.softuni.movies.services.ReviewService;
 import org.modelmapper.ModelMapper;

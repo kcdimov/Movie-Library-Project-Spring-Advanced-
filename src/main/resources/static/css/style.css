@@ -792,6 +792,16 @@ footer {
     border: 1px #8DF5E4 solid;
 }
 
+#deleteButton {
+    color: antiquewhite;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    background-image: linear-gradient(to left, #74ebd5, #9face6);
+
+}
+
 #checkBoxes label {
     display: block;
     margin-top: 0.5rem;

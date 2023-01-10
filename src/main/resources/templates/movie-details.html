@@ -42,7 +42,8 @@
                     </div>
                     <form th:action="@{/movies/movie-details/{id}(id=*{id})}"
                           th:method="delete">
-                        <input type="submit" value="Delete Movie" onclick="return confirm('Are you sure wanna delete the movie!')">
+                        <input id="deleteButton" type="submit" value="Delete Movie"
+                               onclick="return confirm('Are you sure wanna delete the movie!')">
                     </form>
 <!--                    <a th:action="@{/movie-details/{id}(id=*{id})}" th:method="delete" role="button" class="btn btn-lg"-->
 <!--                       onclick="return confirm('Are you sure wanna delete the movie!')">-->

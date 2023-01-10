@@ -28,13 +28,12 @@ public class SecurityConfiguration {
         http.
                         authorizeRequests().
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                // everyone can login and register
                         antMatchers("/", "/login", "/register",
                         "/home", "/movies/add-movie", "/movies/movie-details",
                         "/actors/add-actor", "/actor/actor-details").permitAll().
                         antMatchers("/js/**", "/css/**", "/images/**", "/videos/**").permitAll().
                         antMatchers("/user").hasRole(UserRoleEnum.USER.name()).
-//                // pages available only for admins
+//                      pages available only for admins
                         antMatchers("/movies/add-movie").hasRole(UserRoleEnum.ADMIN.name()).
                         anyRequest().
                 authenticated().
@@ -43,8 +42,7 @@ public class SecurityConfiguration {
                         loginPage("/login").
                         usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-
-//                        defaultSuccessUrl("/").
+//                      defaultSuccessUrl("/").
                         defaultSuccessUrl("/home", true).
                         failureForwardUrl("/login-error").
                 and().

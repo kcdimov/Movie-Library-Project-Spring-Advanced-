@@ -83,7 +83,7 @@ public class MovieAddBM {
     }
 
 
-//    @NotBlank(message = "Please enter director first name")
+//    @NotBlank(message = "Please enter Director first name")
 //    public String getDirectorFirstName() {
 //        return directorFirstName;
 //    }
@@ -93,7 +93,7 @@ public class MovieAddBM {
 //    }
 //
 //
-//    @NotBlank(message = "Please enter actor last name")
+//    @NotBlank(message = "Please enter Director last name")
 //    public String getDirectorLastName() {
 //        return directorLastName;
 //    }
