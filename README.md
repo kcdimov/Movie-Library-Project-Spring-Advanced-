@@ -17,4 +17,4 @@ If you dont' have registration you can see only movies titles, actors names and 
 
 For Login in Movie Library have to fill username and password.
 
-First if you wanna to register movie, first have to register actors. After that you can movie to library. Movie form contains following fields: title, pl0t, genres and actors. You have to write title and plot and select genre and actors from existing. User can add picture to movie or actor or both. User can add Review to the existing movies.
+First if you wanna to register movie, first have to register actors. After that you add the movie to library. Movie form contains following fields: title, plot, genres and actors. You have to write title and plot and select genre and actors from existing. User can add picture to movie or actor or both. User can add Review to the existing movies.
